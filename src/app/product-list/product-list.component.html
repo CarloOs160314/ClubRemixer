@@ -1,0 +1,26 @@
+<!-- Agregamos un botón que permita, a los usuarios, compartir un producto con sus amigos-->
+
+<h1>Lista de Productos</h1>
+<div *ngFor="let product of products; index as productId">
+  <h2>
+    <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+      {{ product.name }}
+    </a>
+  </h2>
+  <!-- el *ngIf valida que exista un valor en la variable
+    y la pinta si la contiene, si no, la omite-->
+  <!--<p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>-->
+  <img class="product" src="{{product.Portada}}" width="300"/>
+  <br>
+  <br>
+  <br>
+  <hr id="linea">
+  <!-- Agregamos un nuevo componente a nuestra -->
+  <!-- para agregar un componente, debemos utilizar la etiqueta app
+         seguidal nombre del componente separado por guien medio '-' -->
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+
+  </app-product-alerts>
+</div>
